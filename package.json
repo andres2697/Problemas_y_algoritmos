@@ -17,7 +17,7 @@
     "read-excel-file": "^5.5.0",
     "v-calendar": "^3.0.0-alpha.8",
     "vue": "^3.2.37",
-    "vue-router": "^4.0.15",
+    "vue-router": "^4.1.6",
     "vuedraggable": "^4.1.0",
     "vuex": "^4.0.2"
   },
