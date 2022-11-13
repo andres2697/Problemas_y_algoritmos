@@ -1,29 +1,41 @@
-<script setup>
-import ButtonRepo from '@/components/ButtonRepo.vue'
-</script>
-
 <template>
-  <div class="bg-gray-50">
-    <div
-      class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:flex lg:items-center lg:justify-between lg:py-16 lg:px-8"
-    >
-      <h2
-        class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10"
-      >
-        Ready to dive in?
-        <br />
-        <span class="text-indigo-600">Vite + Vue 3 + Tailwind CSS</span>
-      </h2>
-      <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
-        <div class="inline-flex rounded-md shadow">
-          <router-link
-            to="/about"
-            class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-5 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-indigo-500 focus:outline-none"
-            >Next Page</router-link
-          >
-        </div>
-        <ButtonRepo />
-      </div>
+  <div class="flex w-full items-center justify-center pt-2">
+    <div class="flex flex-col">
+      <p class="text-center text-medium pb-2">
+        Ingeniero en computación <b>José Andrés Solís Sotelo</b>.
+      </p>
+      <span class=" text-center">
+        El motivo de esta aplicación es mostrar los ejercicios solicitados para la vacante antes mencionada.
+        <br>
+        Para el desarrollo de la misma se utilizó la tecnología de Vue 3 con Vite, Tailwind y Vuetify. 
+      </span>
+      <p class="text-center text-medium mt-2">
+        <span class="font-semibold pb-2">
+          Lenguajes manejados:
+        </span>
+        <ul v-for="lenguaje in lenguajes">
+          <li>
+            {{lenguaje}}
+          </li>
+        </ul>
+      </p>
+      <p class="text-center text-medium pb-2 mt-2">
+        <span class="font-semibold">
+          Herramientas manejadas:
+        </span>
+        <br>
+        <ul v-for="herramienta in herramientas">
+          <li>
+            {{herramienta}}
+          </li>
+        </ul>
+      </p>
     </div>
   </div>
 </template>
+
+<script setup>
+  import { ref } from "vue";
+  const lenguajes = ['Vue js 3', 'Javascript', 'Flutter', 'React Native', 'Angular', 'Laravel'];
+  const herramientas = ['Firebase', 'Database', 'MySql', 'Google Geolocation API'];
+</script>

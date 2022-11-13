@@ -1,62 +1,40 @@
 import Home from "./views/Home.vue";
-import Login from "./views/Login.vue";
-import About from "./views/About.vue";
-import NotFound from "./views/NotFound.vue";
-import Preventivo from "./views/Preventivo/Preventivo.vue";
-import Dashboard from "./views/Dashboard.vue";
-import CapturarFolio from "./views/CapturarFolio.vue";
-import Correctivo from "./views/Correctivo/Correctivo.vue";
-import Configuraciones from "./views/Configuraciones.vue";
-import ConsultarFolios from "./views/ConsultarFolios.vue";
+import Ejercicio1 from "./views/Ejercicio1.vue";
+import Ejercicio2 from "./views/Ejercicio2.vue";
+import Ejercicio3 from "./views/Ejercicio3.vue";
 
 /** @type {import('vue-router').RouterOptions['routes']} */
 export const routes = [
   {
     path: "/",
-    component: Login,
-    name: "login",
-    meta: { title: "Login", authorization: false, layout: true },
+    component: Home,
+    name: "home",
+    meta: { title: "Home" },
   },
   {
-    path: "/dashboard",
-    component: Dashboard,
-    meta: { title: "Dashboard", authorization: true },
+    path: "/ejercicio1",
+    component: Ejercicio1,
+    name: "ejercicio1",
+    meta: { title: "Ejercicio1" },
   },
   {
-    path: "/capturar-folio",
-    component: CapturarFolio,
-    meta: { title: "Capturar Folio", authorization: true },
+    path: "/ejercicio2",
+    component: Ejercicio2,
+    name: "ejercicio2",
+    meta: { title: "Ejercicio2" },
   },
   {
-    path: "/capturar-folio/preventivo/:tipoFolio/:id",
-    name: "capturarPreventivo",
-    component: Preventivo,
-    meta: { title: "Folios preventivos", authorization: true },
-    props: { control: false }
+    path: "/ejercicio3",
+    component: Ejercicio3,
+    name: "ejercicio3",
+    meta: { title: "Ejercicio3" },
   },
-  {
-    path: "/capturar-folio/correctivo/:id",
-    name: "capturarCorrectivo",
-    component: Correctivo,
-    meta: { title: "Folios Correctivos", authorization: true },
-    props: { control: false }
-  },
-  {
-    path: "/configuraciones",
-    name: "Configuraciones",
-    component: Configuraciones,
-    meta: { title: "Configuraciones", authorization: true },
-  },
-  {
-    path: "/about",
-    meta: { title: "About", authorization: true },
-    component: About,
-  },
-  {
-    path: "/consultar-folios",
-    name: "consultarFolios",
-    component: ConsultarFolios,
-    meta: { title: "Consultar Folios", authorization: true },
-  },
-  { path: "/:path(.*)", component: NotFound, meta: { authorization: true } },
+  // {
+  //   path: "/capturar-folio/correctivo/:id",
+  //   name: "capturarCorrectivo",
+  //   component: Correctivo,
+  //   meta: { title: "Folios Correctivos", authorization: true },
+  //   props: { control: false }
+  // },
+  // { path: "/:path(.*)", component: NotFound, meta: { authorization: true } },
 ];
