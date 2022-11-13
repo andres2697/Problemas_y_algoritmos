@@ -54,7 +54,8 @@
     }
   }
 
-  const formatEntry = (entradaSeg) => {
+  const formatEntry = (entradaSeg) => { // Función para dar formato a los segundos
+                                        // recibiendo como parámetro el número introducido en el input
     year.value = 0;
     day.value = 0;
     hours.value = 0;
@@ -73,26 +74,38 @@
         let aux = parseInt(entradaSeg, 10);
         let stringAux = '';
 
-        if(aux === 0){
+        if(aux === 0){ // Validar si el valor introducido es igual a 0
             message.value = 'Ahora';
         }else{
-            while(aux >= 60){
+            while(aux >= 60){ // Realiza las restas correspondientes mientras los segundos puedan
+                              // acompletar al menos un minuto (60 segundos).
                 if(aux >= 31557600){
+                    //Si se entra en esta validación, los segundos pueden acompletar un año
+                    // y se incrementa en uno su respectivo contador.
                     year.value++;
-                    aux = aux - 31557600;
+                    aux = aux - 31557600; //Resta equivalente de un año en segundos
                 }else if(aux >= 86400){
+                    //Si se entra en esta validación, los segundos pueden acompletar un día
+                    // y se incrementa en uno su respectivo contador.
                     day.value++;
-                    aux = aux - 86400;
+                    aux = aux - 86400; //Resta equivalente de un día en segundos
                 }else if(aux >= 3600){
+                    //Si se entra en esta validación, los segundos pueden acompletar una hora
+                    // y se incrementa en uno su respectivo contador.
                     hours.value++;
-                    aux = aux - 3600;
+                    aux = aux - 3600; //Resta equivalente de una hora en segundos
                 }else if(aux >= 60){
+                    //Si se entra en esta validación, los segundos pueden acompletar un minuto
+                    // y se incrementa en uno su respectivo contador.
                     minutes.value++;
-                    aux = aux - 60;
+                    aux = aux - 60; //Resta equivalente de un minuto en segundos
                 } 
             }
-            seconds.value = aux;
+            seconds.value = aux; //El sobrante es agregado a los segundos
 
+            //------------------------------------------------------------------//
+            //----- Bloque de asignación de texto al arreglo splitMessage ------//
+            //------------------------------------------------------------------//
             if(year.value > 0){
                 if(year.value == 1){
                     splitMessage.value.push(year.value.toString() + ' año');
@@ -128,18 +141,25 @@
                     splitMessage.value.push(seconds.value.toString() + ' segundos');
                 }
             }
+            //---------------------------------------
+
+            //------------------------------------------------------------------//
+            //-------------- Recorrido del arreglo splitMessage ----------------//
+            //------------------------------------------------------------------//
             let i = 0;
             splitMessage.value.forEach((message)=>{
-                if(i == 0){
+                if(i == 0){ // Si es el primer elemento no se añade el conector 'y' o ','
                     stringAux = stringAux + message;
-                }else if(i == splitMessage.value.length - 1){
+                }else if(i == splitMessage.value.length - 1){ // Si es el ultimo elemento, se añade el 
+                                                              // conector 'y' a la cadena concatenada.
                     stringAux = stringAux + ' y ' + message;
                 }else{
-                    stringAux = stringAux + ', ' + message;
+                    stringAux = stringAux + ', ' + message; // Si el elemento es intermedio, se añade una ','
+                                                            // a la cadena concatenada 
                 }
                 i++;
             });
-            message.value = stringAux;
+            message.value = stringAux; // Impresión en DOM de variable.
         }
     }
   }

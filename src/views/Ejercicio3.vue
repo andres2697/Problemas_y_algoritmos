@@ -110,14 +110,21 @@ import { ref } from "vue";
   const totalPriceTicket = ref('');
 
   const calculateValues = () => {
+    //--------------------------------------------------------------------------------//
+    //------- Muestra de errores si sus inputs correspondientes están vacíos ---------//
+    //--------------------------------------------------------------------------------//
     if(card.value == ''){ errors.value[0] = true; }else{ errors.value[0] = false; }
     if(ticket.value == ''){ errors.value[1] = true; }else{ errors.value[1] = false; }
     if(perc.value == ''){ errors.value[2] = true; }else{ errors.value[2] = false; }
+    //---------------------------------
 
-    n.value = MathCalcs(parseInt(card.value, 10), parseInt(ticket.value, 10), perc.value);
+    // Llamado y retorno de la función mathCalcs con los parametros (card, ticket, perc)
+    n.value = mathCalcs(parseInt(card.value, 10), parseInt(ticket.value, 10), perc.value); 
   }
 
-  const MathCalcs = (tarjeta, boleto, comision) => {
+  const mathCalcs = (tarjeta, boleto, comision) => { // Función para cálculo de veces necesarias para
+                                                     // que el sistema B tenga el mismo rendimiento que 
+                                                     //el sistema A.
     let sysB = parseFloat(tarjeta);
     let sysA = 0;
     let result = 0;
@@ -126,13 +133,14 @@ import { ref } from "vue";
     console.log(comision);
 
     while(ceil(sysB) > sysA){
-        sysB = sysB + (boleto * Math.pow(comision, ++result));
-        sysA = sysA + boleto;
+        sysB = sysB + (boleto * Math.pow(comision, ++result)); // Incremento del porcentaje proporcional
+                                                               // del ticket anterior. 
+        sysA = sysA + boleto; //Incremento por el valor directo de un ticket
     }
     retorno = parseInt(result, 10);
     totalPriceCard.value = parseInt(sysB).toString();
     totalPriceTicket.value = sysA.toString();
-    return retorno.toString();
+    return retorno.toString(); // Retorno de veces necesarias.
   }
 
   function filterKey(e) { // Función que exculye cualquier caracter que no sea un número

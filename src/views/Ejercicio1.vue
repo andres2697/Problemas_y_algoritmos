@@ -52,7 +52,7 @@
     }
   }
 
-  const cleanMessage = () => {
+  const cleanMessage = () => { //Limpia el mensaje cada vez que el input adquiere el foco
     mensaje.value = '';
   }
 </script>
