@@ -13,7 +13,7 @@
     "flowbite": "^1.5.3",
     "html-to-pdfmake": "^2.4.6",
     "jspdf": "^2.5.1",
-    "pdfmake": "^0.2.5",
+    "pdfmake": "^0.2.7",
     "read-excel-file": "^5.5.0",
     "v-calendar": "^3.0.0-alpha.8",
     "vue": "^3.2.37",
