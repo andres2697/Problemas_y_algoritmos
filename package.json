@@ -11,7 +11,7 @@
     "@vuelidate/validators": "^2.0.0-alpha.31",
     "firebase": "^9.8.3",
     "flowbite": "^1.5.3",
-    "html-to-pdfmake": "^2.4.6",
+    "html-to-pdfmake": "^2.4.16",
     "jspdf": "^2.5.1",
     "pdfmake": "^0.2.5",
     "read-excel-file": "^5.5.0",
